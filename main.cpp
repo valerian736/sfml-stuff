@@ -1,21 +1,57 @@
 #include <SFML/Window.hpp>
+#include <SFML/Graphics.hpp>
 
-int main()
+using namespace sf;
+
+int main() 
 {
-    sf::Window window(sf::VideoMode(800, 600), "My window");
+    RenderWindow win(VideoMode(1400, 800), "test");
+    
+    ConvexShape convex;
+    CircleShape shape;
+    // resize it to 5 points
+    convex.setPointCount(5);
 
-    // run the program as long as the window is open
-    while (window.isOpen())
+    // define the points
+
+    convex.setFillColor(Color::Green);
+
+   
+
+
+    while (win.isOpen())
     {
-        // check all the window's events that were triggered since the last iteration of the loop
-        sf::Event event;
-        while (window.pollEvent(event))
+        Event ev;
+        while (win.pollEvent(ev))
         {
-            // "close requested" event: we close the window
-            if (event.type == sf::Event::Closed)
-                window.close();
+            switch (ev.type)
+            {
+            case Event::Closed:
+                win.close();
+                break;
+            case Event::KeyPressed:
+                convex.setPoint(0, sf::Vector2f(100.f, 30.f));
+                convex.setPoint(1, sf::Vector2f(150.f, 10.f));
+                convex.setPoint(2, sf::Vector2f(120.f, 90.f));
+                convex.setPoint(3, sf::Vector2f(30.f, 100.f));
+                convex.setPoint(4, sf::Vector2f(0.f, 50.f));
+
+
+            default:
+                break;
+            }
+            
         }
+
+        win.clear(Color::Cyan);
+        
+        win.draw(convex);
+
+        win.display();
+        
     }
+    
 
     return 0;
+
 }

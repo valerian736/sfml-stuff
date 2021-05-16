@@ -1,0 +1,3 @@
+/home/val736/stuff/cgof/build/CMakeFiles/edit_cache.dir
+/home/val736/stuff/cgof/build/CMakeFiles/rebuild_cache.dir
+/home/val736/stuff/cgof/build/CMakeFiles/SFMLTest.dir
